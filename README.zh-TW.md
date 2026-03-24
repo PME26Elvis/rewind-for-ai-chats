@@ -88,15 +88,9 @@ npm run dev --workspace @rewind/api
 這會在 `http://localhost:8765/` 啟動 Rewind Local API，而 dashboard 可透過 **Sync SQLite** 將資料同步進去。
 
 ## ☁️ 部署到 GitHub Pages
-
-`.github/workflows/deploy-pages.yml` 已經包含 GitHub Pages workflow。
 因為 Web App 使用 `HashRouter`，所以在靜態託管環境下也能安全處理深層連結。
 
-當專案推上 GitHub 後：
-
-1. 把專案推到 `main` 分支。
-2. 在 **Settings → Pages** 中選擇 **GitHub Actions** 作為建置與部署來源。
-3. 內建 workflow 就會安裝相依、用正確的 base path 建置 Vite App，並把 `apps/web/dist` 發布到 GitHub Pages。
+您可以在 GitHub Pages 線上試用此應用程式：[GitHub Pages](https://pme26elvis.github.io/rewind-for-ai-chats/)
 
 ## 🕷️ 批次匯出 — 多平台主動爬取工具
 

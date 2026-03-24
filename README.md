@@ -86,16 +86,10 @@ npm run dev --workspace @rewind/api
 
 That will start the Rewind Local API at `http://localhost:8765/`, which the dashboard can sync to via **Sync SQLite**.
 
-## ☁️ Deploying to GitHub Pages
-
-A GitHub Pages workflow is already included in `.github/workflows/deploy-pages.yml`.
+## ☁️ GitHub Pages
 Because the web app uses `HashRouter`, deep links remain safe on static hosting.
 
-Once the repository is on GitHub:
-
-1. Push the project to your `main` branch.
-2. In **Settings → Pages**, choose **GitHub Actions** as the build and deployment source.
-3. The included workflow will install dependencies, build the Vite app with the correct base path, and publish `apps/web/dist` to GitHub Pages.
+You can try the app online at [GitHub Pages](https://pme26elvis.github.io/rewind-for-ai-chats/)
 
 ## 🕷️ Batch Export — Multi-Platform Active Crawler
 
