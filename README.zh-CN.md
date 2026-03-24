@@ -48,11 +48,10 @@
 | --- | --- | --- | --- | --- |
 | ChatGPT | ✅ | ✅ | ✅ | 使用 userscript 或另存页面后导入 |
 | Grok | ✅ | ✅ | ✅ | 使用 userscript 或另存页面后导入 |
-
-注意：Grok 的另存页面（HTML / MHTML）导入只会保留当前可见的 branch，因为保存页面本身不包含隐藏 branch 的完整历史。
-
 | Gemini | — | ✅ | — | 另存网页 → `.mhtml` |
 | Claude | — | ✅ | — | 另存网页 → `.mhtml` |
+
+注意：Grok 的另存页面（HTML / MHTML）导入只会保留当前可见的 branch，因为保存页面本身不包含隐藏 branch 的完整历史。
 
 ## 📸 Screenshots
 

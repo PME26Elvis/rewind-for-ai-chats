@@ -48,12 +48,10 @@ Relive your year of AI with word clouds, activity trends, branching timelines, c
 | --- | --- | --- | --- | --- |
 | ChatGPT | ✅ | ✅ | ✅ | Userscript or saved page import |
 | Grok | ✅ | ✅ | ✅ | Userscript or saved page import |
-
-Note: For Grok saved-page (HTML / MHTML) imports, only the currently visible branch is preserved because saved pages do not include hidden branch history.
-
 | Gemini | — | ✅ | — | Save Page As → `.mhtml` |
 | Claude | — | ✅ | — | Save Page As → `.mhtml` |
 
+Note: For Grok saved-page (HTML / MHTML) imports, only the currently visible branch is preserved because saved pages do not include hidden branch history.
 ## 📸 Screenshots
 
 > UI/UX changes fairly often, so treat GitHub Pages or your local deployment as the source of truth. The screenshots here are illustrative rather than guaranteed to be perfectly up to date.
