@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@rewind/shared": ["packages/shared/src/index.ts"],
+      "@rewind/core": ["packages/core/src/index.ts"],
+      "@rewind/db": ["packages/db/src/index.ts"],
+      "@rewind/ui": ["packages/ui/src/index.ts"]
+    }
+  }
+}

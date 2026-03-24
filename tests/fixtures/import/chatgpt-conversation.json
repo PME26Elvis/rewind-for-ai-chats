@@ -1,0 +1,33 @@
+{
+  "id": "chatgpt-fixture-1",
+  "title": "Roadtrip planning",
+  "create_time": "2024-01-10T10:00:00Z",
+  "update_time": "2024-01-10T10:10:00Z",
+  "account": { "label": "Personal" },
+  "current_node": "m2",
+  "mapping": {
+    "root": { "id": "root", "children": ["m1"] },
+    "m1": {
+      "id": "m1",
+      "parent": "root",
+      "children": ["m2"],
+      "message": {
+        "author": { "role": "user" },
+        "create_time": "2024-01-10T10:01:00Z",
+        "content": { "parts": ["Plan a weekend roadtrip from Seattle."] },
+        "metadata": { "model_slug": "gpt-4o-mini" }
+      }
+    },
+    "m2": {
+      "id": "m2",
+      "parent": "m1",
+      "children": [],
+      "message": {
+        "author": { "role": "assistant" },
+        "create_time": "2024-01-10T10:02:00Z",
+        "content": { "parts": ["Try Leavenworth, Portland, or Olympic National Park."] },
+        "metadata": { "model_slug": "gpt-4o-mini" }
+      }
+    }
+  }
+}

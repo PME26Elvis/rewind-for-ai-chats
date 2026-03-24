@@ -1,0 +1,30 @@
+{
+  "conversationId": "gemini-fixture-1",
+  "title": "Gemini research notes",
+  "accountLabel": "Research",
+  "createdAt": "2024-02-14T09:00:00Z",
+  "updatedAt": "2024-02-14T09:05:00Z",
+  "messages": [
+    {
+      "id": "gm1",
+      "role": "user",
+      "text": "Summarize the article on local-first software.",
+      "createdAt": "2024-02-14T09:01:00Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "id": "gm2",
+      "role": "assistant",
+      "text": "Local-first apps keep data on-device and sync as an enhancement.",
+      "createdAt": "2024-02-14T09:02:00Z",
+      "model": "gemini-1.5-pro"
+    },
+    {
+      "id": "gm3",
+      "role": "user",
+      "text": "Highlight how that affects backup strategy.",
+      "createdAt": "2024-02-14T09:04:00Z",
+      "model": "gemini-1.5-pro"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@rewind/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node -e \"console.log('desktop scaffold pending tauri integration')\"",
+    "build": "node -e \"console.log('desktop scaffold pending tauri integration')\""
+  },
+  "dependencies": {
+    "@rewind/core": "0.1.0",
+    "@rewind/db": "0.1.0",
+    "@rewind/shared": "0.1.0"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "accounts": {
+    "account:chatgpt:personal": { "id": "account:chatgpt:personal", "platform": "chatgpt", "displayLabel": "ChatGPT Personal", "createdAt": "2024-01-10T00:00:00.000Z", "updatedAt": "2024-01-10T00:00:00.000Z" },
+    "account:chatgpt:work": { "id": "account:chatgpt:work", "platform": "chatgpt", "displayLabel": "ChatGPT Work", "createdAt": "2024-02-15T00:00:00.000Z", "updatedAt": "2024-02-15T00:00:00.000Z" },
+    "account:gemini:research": { "id": "account:gemini:research", "platform": "gemini", "displayLabel": "Gemini Research", "createdAt": "2025-01-15T00:00:00.000Z", "updatedAt": "2025-01-15T00:00:00.000Z" },
+    "account:claude:lab": { "id": "account:claude:lab", "platform": "claude", "displayLabel": "Claude Lab", "createdAt": "2025-02-01T00:00:00.000Z", "updatedAt": "2025-02-01T00:00:00.000Z" },
+    "account:grok:side": { "id": "account:grok:side", "platform": "grok", "displayLabel": "Grok Side", "createdAt": "2025-03-05T00:00:00.000Z", "updatedAt": "2025-03-05T00:00:00.000Z" }
+  },
+  "conversations": {
+    "conv-2024-roadmap": { "id": "conv-2024-roadmap", "platform": "chatgpt", "accountId": "account:chatgpt:personal", "title": "Roadmap planning", "sourceType": "json_export", "favorite": false, "createdAt": "2024-01-10T10:00:00.000Z", "updatedAt": "2024-01-10T12:00:00.000Z", "importedAt": "2024-01-10T12:10:00.000Z" },
+    "conv-2024-photos": { "id": "conv-2024-photos", "platform": "chatgpt", "accountId": "account:chatgpt:work", "title": "Image sprint review", "sourceType": "html_import", "favorite": false, "createdAt": "2024-02-15T09:00:00.000Z", "updatedAt": "2024-02-15T10:00:00.000Z", "importedAt": "2024-02-15T10:05:00.000Z" },
+    "conv-2025-research": { "id": "conv-2025-research", "platform": "gemini", "accountId": "account:gemini:research", "title": "Research backlog", "sourceType": "json_export", "favorite": false, "createdAt": "2025-01-15T08:00:00.000Z", "updatedAt": "2025-01-15T09:00:00.000Z", "importedAt": "2025-01-15T09:10:00.000Z" },
+    "conv-2025-claude": { "id": "conv-2025-claude", "platform": "claude", "accountId": "account:claude:lab", "title": "Claude analysis", "sourceType": "manual_import", "favorite": false, "createdAt": "2025-02-01T08:00:00.000Z", "updatedAt": "2025-02-01T08:45:00.000Z", "importedAt": "2025-02-01T08:50:00.000Z" },
+    "conv-2025-grok": { "id": "conv-2025-grok", "platform": "grok", "accountId": "account:grok:side", "title": "Grok experiments", "sourceType": "manual_import", "favorite": false, "createdAt": "2025-03-05T08:00:00.000Z", "updatedAt": "2025-03-05T09:00:00.000Z", "importedAt": "2025-03-05T09:10:00.000Z" }
+  },
+  "branches": {
+    "branch-roadmap-main": { "id": "branch-roadmap-main", "conversationId": "conv-2024-roadmap", "branchDepth": 0, "isLatest": true },
+    "branch-roadmap-alt": { "id": "branch-roadmap-alt", "conversationId": "conv-2024-roadmap", "branchDepth": 1, "isLatest": false },
+    "branch-photos-main": { "id": "branch-photos-main", "conversationId": "conv-2024-photos", "branchDepth": 0, "isLatest": true },
+    "branch-photos-alt": { "id": "branch-photos-alt", "conversationId": "conv-2024-photos", "branchDepth": 1, "isLatest": false },
+    "branch-photos-alt2": { "id": "branch-photos-alt2", "conversationId": "conv-2024-photos", "branchDepth": 1, "isLatest": false },
+    "branch-research-main": { "id": "branch-research-main", "conversationId": "conv-2025-research", "branchDepth": 0, "isLatest": true },
+    "branch-claude-main": { "id": "branch-claude-main", "conversationId": "conv-2025-claude", "branchDepth": 0, "isLatest": true },
+    "branch-claude-alt": { "id": "branch-claude-alt", "conversationId": "conv-2025-claude", "branchDepth": 1, "isLatest": false },
+    "branch-grok-main": { "id": "branch-grok-main", "conversationId": "conv-2025-grok", "branchDepth": 0, "isLatest": true }
+  },
+  "messages": {
+    "m1": { "id": "m1", "conversationId": "conv-2024-roadmap", "branchId": "branch-roadmap-main", "role": "user", "contentBlocksJson": "[{\"type\":\"text\",\"text\":\"Roadmap planning milestones roadmap roadmap quarter\"}]", "createdAt": "2024-01-10T10:00:00.000Z", "wordCount": 6, "charCount": 45, "hasCode": false, "hasImages": false, "hasFiles": false },
+    "m2": { "id": "m2", "conversationId": "conv-2024-roadmap", "branchId": "branch-roadmap-main", "role": "assistant", "contentBlocksJson": "[{\"type\":\"text\",\"text\":\"Planning roadmap summary with milestones and budget notes\"}]", "createdAt": "2024-01-10T10:05:00.000Z", "wordCount": 8, "charCount": 57, "hasCode": false, "hasImages": false, "hasFiles": false },
+    "m3": { "id": "m3", "conversationId": "conv-2024-roadmap", "branchId": "branch-roadmap-alt", "role": "user", "contentBlocksJson": "[{\"type\":\"text\",\"text\":\"Alternate roadmap branch for launch checklist\"}]", "createdAt": "2024-01-10T10:10:00.000Z", "wordCount": 6, "charCount": 43, "hasCode": false, "hasImages": false, "hasFiles": false },
+    "m4": { "id": "m4", "conversationId": "conv-2024-photos", "branchId": "branch-photos-main", "role": "user", "contentBlocksJson": "[{\"type\":\"text\",\"text\":\"Review the product screenshots and annotate image issues\"}]", "createdAt": "2024-02-15T09:00:00.000Z", "wordCount": 8, "charCount": 55, "hasCode": false, "hasImages": true, "hasFiles": false },
+    "m5": { "id": "m5", "conversationId": "conv-2024-photos", "branchId": "branch-photos-main", "role": "assistant", "contentBlocksJson": "[{\"type\":\"text\",\"text\":\"Image review summary with screenshot callouts and fixes\"}]", "createdAt": "2024-02-15T09:05:00.000Z", "wordCount": 8, "charCount": 54, "hasCode": false, "hasImages": true, "hasFiles": false },
+    "m6": { "id": "m6", "conversationId": "conv-2024-photos", "branchId": "branch-photos-alt", "role": "user", "contentBlocksJson": "[{\"type\":\"text\",\"text\":\"Image variant branch with asset notes\"}]", "createdAt": "2024-02-15T09:10:00.000Z", "wordCount": 6, "charCount": 36, "hasCode": false, "hasImages": true, "hasFiles": false },
+    "m7": { "id": "m7", "conversationId": "conv-2025-research", "branchId": "branch-research-main", "role": "user", "contentBlocksJson": "[{\"type\":\"text\",\"text\":\"Research backlog synthesis experiment notes research\"}]", "createdAt": "2025-01-15T08:00:00.000Z", "wordCount": 6, "charCount": 49, "hasCode": false, "hasImages": false, "hasFiles": false },
+    "m8": { "id": "m8", "conversationId": "conv-2025-research", "branchId": "branch-research-main", "role": "assistant", "contentBlocksJson": "[{\"type\":\"text\",\"text\":\"Research summary and experiment plan\"}]", "createdAt": "2025-01-15T08:05:00.000Z", "wordCount": 5, "charCount": 36, "hasCode": false, "hasImages": false, "hasFiles": false },
+    "m9": { "id": "m9", "conversationId": "conv-2025-research", "branchId": "branch-research-main", "role": "user", "contentBlocksJson": "[{\"type\":\"text\",\"text\":\"Compare research backlog priorities and experiments\"}]", "createdAt": "2025-01-15T08:10:00.000Z", "wordCount": 6, "charCount": 49, "hasCode": false, "hasImages": false, "hasFiles": false },
+    "m10": { "id": "m10", "conversationId": "conv-2025-research", "branchId": "branch-research-main", "role": "assistant", "contentBlocksJson": "[{\"type\":\"text\",\"text\":\"Experiment brief with research roadmap backlog notes\"}]", "createdAt": "2025-01-15T08:15:00.000Z", "wordCount": 7, "charCount": 53, "hasCode": false, "hasImages": false, "hasFiles": false },
+    "m11": { "id": "m11", "conversationId": "conv-2025-claude", "branchId": "branch-claude-main", "role": "user", "contentBlocksJson": "[{\"type\":\"text\",\"text\":\"Claude analysis comparing design options\"}]", "createdAt": "2025-02-01T08:00:00.000Z", "wordCount": 5, "charCount": 39, "hasCode": false, "hasImages": false, "hasFiles": false },
+    "m12": { "id": "m12", "conversationId": "conv-2025-claude", "branchId": "branch-claude-alt", "role": "assistant", "contentBlocksJson": "[{\"type\":\"text\",\"text\":\"Alternative branch with tradeoff matrix\"}]", "createdAt": "2025-02-01T08:05:00.000Z", "wordCount": 5, "charCount": 38, "hasCode": false, "hasImages": false, "hasFiles": false },
+    "m13": { "id": "m13", "conversationId": "conv-2025-grok", "branchId": "branch-grok-main", "role": "user", "contentBlocksJson": "[{\"type\":\"text\",\"text\":\"Grok experiments for side projects\"}]", "createdAt": "2025-03-05T08:00:00.000Z", "wordCount": 5, "charCount": 34, "hasCode": false, "hasImages": false, "hasFiles": false }
+  },
+  "importJobs": {}
+}

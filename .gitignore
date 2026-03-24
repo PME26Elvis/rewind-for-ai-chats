@@ -1,0 +1,10 @@
+node_modules
+dist
+coverage
+.vite
+*.tsbuildinfo
+.DS_Store
+*.sqlite
+*.db
+*.rej
+*.orig
