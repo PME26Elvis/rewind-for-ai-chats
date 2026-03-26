@@ -2,47 +2,76 @@
 
 [繁體中文 README](README.zh-TW.md) · [简体中文 README](README.zh-CN.md)
 
-> A local-first, deeply immersive time machine for your AI conversations. 
-> See your past interactions with ChatGPT, Gemini, Claude, and Grok come alive.
+Local-first archive and yearly recap for AI chats across ChatGPT, Grok, Gemini, and Claude.
 
-Sometimes, our conversations with AI aren't just transactional Q&As; they are trails of thought, brainstorming sessions, and sparks of inspiration. 
-**Rewind** is more than just an "export tool"—it's your personal AI conversational archive. Inspired by the beautiful analytics of Spotify Wrapped and YouTube Music Recap, Rewind aggregates your scattered AI chats across multiple platforms and presents them back to you through a breathtaking, immersive dashboard. 
+Import exported JSON or saved pages, browse conversations in one place, and generate a Spotify-style rewind from your own data.
 
-Relive your year of AI with word clouds, activity trends, branching timelines, compare-year insights, and your most-discussed topics—all stored 100% securely on your local machine.
+## Demo
 
-## ✨ Features
+- **Live Demo:** [GitHub Pages](https://pme26elvis.github.io/rewind-for-ai-chats/)
+- **Batch Export Script:** [`packages/extension/rewind-batch-export.user.js`](packages/extension/rewind-batch-export.user.js)
+- **Local Development:** See [Running Locally](#running-locally)
 
-- 🎬 **Year-Selectable "Rewind" Immersive Story Mode**: A stunning full-screen, auto-advancing presentation of your AI stats for the selected year (Top Platforms, Conversation Volume, Topic Highlights, and more).
-- 📊 **Beautiful Analytics Dashboard**: Highly aesthetic charts visualizing your monthly message trends, platform dependency, word clouds, top conversations, and year-over-year changes.
-- 🌳 **Branch-Aware Unified Timeline**: A spectacular "birds-eye view" SVG map showing the evolutionary tree of your branching AI conversations.
-- 📚 **Powerful Conversation Library**: A robust, multi-condition filterable data table to search, sort, favorite, and inspect your archived moments (Supports Date, Platform, Attachments, Favorites, and normalized metadata).
-- 🖼️ **Shareable Rewind Cards**: Export a polished summary image of your selected Rewind to share or keep.
-- 🔒 **100% Local-First Architecture**: Your data never leaves your machine. 
-  - **Browser Archive**: The current web build stores normalized conversation data and metadata locally in `localStorage`.
-  - **Persistence Server**: A local API Node server (`packages/api`) is pre-configured to ingest your archive into a local **SQLite** database.
-  - **Database Location**: Synced data is stored in `packages/db/rewind.sqlite` on your local filesystem.
-  - **Search Foundation**: The SQLite layer includes a local full-text-search foundation for future and API-based querying.
-- ⚡ **Cross-Platform AI Support**: Rewind currently supports ChatGPT and Grok JSON imports, plus ChatGPT / Gemini / Claude / Grok HTML-MHTML imports.
-- 🚀 **Seamless Import Wizard**: A polished drag-and-drop UI to quickly ingest JSON exports and native browser captures (`.html`, `.htm`, `.mhtml`, `.mht`).
-- ☁️ **GitHub Pages-Ready Web App**: The web app now uses `HashRouter`, and a Pages deployment workflow is included for static hosting.
+![Rewind demo](docs/demo/rewind-demo.gif)
 
-## ✅ Feature Matrix
+## Quick Start
 
-### Core Capabilities
+### Option A — Bulk export from ChatGPT or Grok
+1. Install [Tampermonkey](https://www.tampermonkey.net/).
+2. Install the userscript from [`packages/extension/rewind-batch-export.user.js`](packages/extension/rewind-batch-export.user.js).
+3. Open [chatgpt.com](https://chatgpt.com) or [grok.com](https://grok.com).
+4. Use **Rewind Batch Export** to export conversations as `.json`.
+5. Open [Rewind on GitHub Pages](https://pme26elvis.github.io/rewind-for-ai-chats/) and import the files.
 
-| Capability | Status | Notes |
-| --- | --- | --- |
-| Immersive Rewind story | ✅ | Year-selectable, multi-slide, localized presentation |
-| Dashboard analytics | ✅ | Monthly activity, platform share, word cloud, highlights |
-| Compare years | ✅ | Selected year vs. previous year |
-| Conversation library | ✅ | Search, sort, favorites, attachments, metadata badges |
-| Shareable summary card | ✅ | Export a Rewind snapshot as PNG |
-| Local browser archive | ✅ | Stored locally in `localStorage` |
-| SQLite sync | ✅ | Sync imported archive to the local API / SQLite database |
-| Local search foundation | ✅ | SQLite FTS-backed search endpoint is included |
-| GitHub Pages deployment | ✅ | HashRouter + workflow preconfigured |
+### Option B — Save important chats manually
+1. Open a conversation in ChatGPT, Gemini, Claude, or Grok.
+2. Use **Save Page As** in your browser.
+3. Save as `.mhtml` when available (`.html` / `.htm` also supported in some cases).
+4. Import the file into Rewind.
 
-### Source / Format Support
+## Overview
+
+AI conversations are often scattered across multiple platforms and difficult to revisit later.
+
+Rewind provides a local-first way to collect, organize, and review them in one place. It combines archival, browsing, analytics, and yearly recap in a single app.
+
+## Features
+
+- Import conversations from **ChatGPT, Grok, Gemini, and Claude**
+- Build a **local-first archive** of AI chat history
+- Browse a **conversation library** with metadata, favorites, and attachments
+- Explore a **unified timeline** of branching conversations
+- View a **yearly rewind** inspired by Spotify Wrapped
+- Inspect **analytics dashboards** for activity trends and platform usage
+- Export **shareable rewind cards**
+- Optionally sync imported data into a local **SQLite** database
+
+## Feature Highlights
+
+### Yearly Rewind
+Yearly recap view with platform mix, activity, and highlights.
+
+### Analytics Dashboard
+Charts for activity trends, platform share, topic signals, and year-over-year comparison.
+
+### Unified Timeline
+A single view for branching conversation structure and history.
+
+### Conversation Library
+Browse, filter, sort, favorite, and inspect archived conversations.
+
+### Shareable Summary Cards
+Export rewind snapshots as images.
+
+### Local-First Architecture
+Your data stays on your machine.
+
+- **Browser archive:** Imported data is stored locally in `localStorage`
+- **Optional local persistence:** A local Node API can sync data into SQLite
+- **Database path:** `packages/db/rewind.sqlite`
+- **Search foundation:** SQLite full-text-search groundwork is included for local querying
+
+## Supported Sources and Formats
 
 | Source | JSON Import | HTML / MHTML Import | Batch Export Script | Recommended Workflow |
 | --- | --- | --- | --- | --- |
@@ -51,61 +80,73 @@ Relive your year of AI with word clouds, activity trends, branching timelines, c
 | Gemini | — | ✅ | — | Save Page As → `.mhtml` |
 | Claude | — | ✅ | — | Save Page As → `.mhtml` |
 
-Note: For Grok saved-page (HTML / MHTML) imports, only the currently visible branch is preserved because saved pages do not include hidden branch history.
-## 📸 Screenshots
+> Note: For Grok saved-page imports (`.html` / `.mhtml`), only the currently visible branch is preserved because hidden branch history is not included in saved pages.
 
-> UI/UX changes fairly often, so treat GitHub Pages or your local deployment as the source of truth. The screenshots here are illustrative rather than guaranteed to be perfectly up to date.
+## Screenshots
 
-![Dashboard Overview](docs/screenshots/dashboard-overview.png)
+> UI changes fairly often. Treat GitHub Pages or your local deployment as the source of truth.
+
 ![Rewind Story](docs/screenshots/rewind-story.png)
-![Library View](docs/screenshots/library-view.png)
 ![Timeline View](docs/screenshots/timeline-view.png)
-![Highlights View](docs/screenshots/highlights-view.png)
 
-## 🛠️ Running the App Locally
+## GitHub Pages
 
-This project has been modernized to run on **React + Vite + Tailwind CSS**.
+Rewind is ready for static hosting and uses `HashRouter` for safe deep-linking on GitHub Pages.
+
+**https://pme26elvis.github.io/rewind-for-ai-chats/**
+
+## Batch Export Script
+
+To bulk-export conversations from **ChatGPT** or **Grok**:
+
+1. Install [Tampermonkey](https://www.tampermonkey.net/).
+2. Open [`packages/extension/rewind-batch-export.user.js`](packages/extension/rewind-batch-export.user.js).
+3. Click **Install** in Tampermonkey.
+4. Visit [chatgpt.com](https://chatgpt.com) or [grok.com](https://grok.com).
+5. Use the floating **Rewind Batch Export** panel to export your archive.
+6. Import the exported `.json` files into Rewind.
+
+For **Gemini** and **Claude**, the current workflow is:
+
+1. Open the conversation in your browser
+2. Use **Save Page As**
+3. Save as `.mhtml` when available
+4. Import the file into Rewind
+
+## Running Locally
+
+This project uses **React + Vite + Tailwind CSS**.
+
+### Start the web app
 
 ```bash
-# 1. Install dependencies
 npm install
-
-# 2. Start the Vite development server
 npm run dev:web
 ```
 
-Navigate to `http://localhost:4173/` to experience the dashboard.
+Open:
 
-To enable local SQLite persistence and the local search foundation, you can also run the local API server:
+`http://localhost:4173/`
+
+### Start the local API for SQLite sync
 
 ```bash
 npm run dev --workspace @rewind/api
 ```
 
-That will start the Rewind Local API at `http://localhost:8765/`, which the dashboard can sync to via **Sync SQLite**.
+This starts the local API at:
 
-## ☁️ GitHub Pages
-Because the web app uses `HashRouter`, deep links remain safe on static hosting.
+`http://localhost:8765/`
 
-You can try the app online at [GitHub Pages](https://pme26elvis.github.io/rewind-for-ai-chats/)
+You can then use **Sync SQLite** from the dashboard to persist imported data into your local database.
 
-## 🕷️ Batch Export — Multi-Platform Active Crawler
+## Acknowledgements
 
-To bulk-export **all** your conversations from **ChatGPT or Grok** in one click:
+This project was originally inspired by [Yalums/lyra-exporter](https://github.com/Yalums/lyra-exporter) (MIT License).
 
-1. Install [Tampermonkey](https://www.tampermonkey.net/) in your browser.
-2. Open the file `packages/extension/rewind-batch-export.user.js` and click **Install** in Tampermonkey.
-3. Navigate to [chatgpt.com](https://chatgpt.com) or [grok.com](https://grok.com). A floating **"⚡ Rewind Batch Export"** panel will appear in the bottom-right corner.
-4. Click **"🚀 Start Export"**. The script will authenticate using your existing session and fetch full JSON trees via internal APIs.
-5. Unzip and drag the `.json` files into the Rewind **Import Data** page to populate your archive.
+Rewind has since evolved toward a standalone local archive, analytics dashboard, and yearly recap experience. Full credit and appreciation remain with the original author for the early work on capturing and mapping AI chat structures.
 
-For **Gemini** and **Claude**, the recommended workflow right now is:
+## License
 
-1. Open the conversation in your browser.
-2. Use **Save Page As**.
-3. Save as `.mhtml` when available.
-4. Import that file into Rewind.
+This project is released under the terms of the license included in this repository.
 
-## 📜 Acknowledgements & License
-
-This project was originally inspired by [Yalums/lyra-exporter](https://github.com/Yalums/lyra-exporter) (MIT License). While this project drastically shifts the focus from a browser-extension exporter to a standalone, highly-aesthetic local analytics dashboard (the "Rewind" experience), we retain deep gratitude and full credit to the original author for the pioneering logic behind capturing and mapping AI chat DOMs and generic JSON structures.

@@ -2,111 +2,150 @@
 
 [English README](README.md) · [繁體中文 README](README.zh-TW.md)
 
-> 一个以本地为核心、沉浸感十足的 AI 对话时光机。 
-> 让你过去在 ChatGPT、Gemini、Claude 与 Grok 上的互动重新鲜活起来。
+支持 ChatGPT、Grok、Gemini 与 Claude 的 AI 对话本地优先归档与年度回顾工具。
 
-有时候，我们和 AI 的对话不只是一次次功能性的问答；它们也是思路的轨迹、头脑风暴的过程，以及灵感冒出的瞬间。 
-**Rewind** 不只是一个「导出工具」——它更像是你的个人 AI 对话档案库。受到 Spotify Wrapped 与 YouTube Music Recap 那种漂亮的年度回顾体验启发，Rewind 会把你分散在不同平台上的 AI 对话汇整起来，并用一个令人惊艳、沉浸感十足的仪表盘重新呈现给你。 
+导入导出的 JSON 或已保存的页面文件后，即可在同一处浏览对话，并基于你自己的数据生成 Spotify 风格的年度回顾。
 
-通过词云、活动趋势、分支时间轴、跨年份比较，以及你最常聊的主题，重新回顾你的 AI 一年——而且一切都 100% 安全地保存在你的本地机器上。
+## Demo
 
-## ✨ 功能特性
+- **在线演示：** [GitHub Pages](https://pme26elvis.github.io/rewind-for-ai-chats/)
+- **批量导出脚本：** [`packages/extension/rewind-batch-export.user.js`](packages/extension/rewind-batch-export.user.js)
+- **本地开发：** 参见 [Running Locally](#本地运行)
 
-- 🎬 **可选年份的「Rewind」沉浸式故事模式**：以全屏、自动播放的方式呈现你所选年份的 AI 统计（常用平台、对话量、主题亮点等等）。
-- 📊 **精美的分析仪表盘**：用高质感图表呈现你的每月消息趋势、平台依赖度、词云、重点对话，以及跨年份变化。
-- 🌳 **支持分支的统一时间轴**：以壮观的「鸟瞰式」SVG 地图呈现你具分支结构的 AI 对话演化树。
-- 📚 **强大的对话库**：可按多种条件筛选的数据表，方便搜索、排序、收藏与查看你归档下来的重要对话（支持日期、平台、附件、收藏，以及规范化后的 metadata）。
-- 🖼️ **可分享的 Rewind 卡片**：把你所选年份的 Rewind 导出成一张整理好的摘要图片。
-- 🔒 **100% 本地优先架构**：你的数据不会离开你的电脑。 
-  - **浏览器档案库**：当前的 Web 版本会把规范化后的对话数据与 metadata 存储在 `localStorage`。
-  - **持久化服务器**：已预先配置一个本地 API Node 服务器（`packages/api`），可将你的档案库写入本地 **SQLite** 数据库。
-  - **数据库位置**：同步后的数据会存储在你本地文件系统中的 `packages/db/rewind.sqlite`。
-  - **搜索基础**：SQLite 层已包含本地全文搜索基础，可供后续与 API 查询使用。
-- ⚡ **跨平台 AI 支持**：目前支持 ChatGPT 与 Grok 的 JSON 导入，以及 ChatGPT / Gemini / Claude / Grok 的 HTML / MHTML 导入。
-- 🚀 **流畅的导入向导**：通过打磨过的拖放式界面，快速导入 JSON 导出文件与原生浏览器保存文件（`.html`、`.htm`、`.mhtml`、`.mht`）。
-- ☁️ **已准备好部署到 GitHub Pages 的 Web App**：Web App 现在使用 `HashRouter`，也已包含 Pages 部署 workflow。
+![Rewind demo](docs/demo/rewind-demo.gif)
 
-## ✅ 功能矩阵
+## 快速开始
 
-### 核心能力
+### 方案 A — 从 ChatGPT 或 Grok 批量导出
+1. 安装 [Tampermonkey](https://www.tampermonkey.net/)。
+2. 安装 [`packages/extension/rewind-batch-export.user.js`](packages/extension/rewind-batch-export.user.js) 中的 userscript。
+3. 打开 [chatgpt.com](https://chatgpt.com) 或 [grok.com](https://grok.com)。
+4. 使用 **Rewind Batch Export** 将对话导出为 `.json`。
+5. 打开 [GitHub Pages 上的 Rewind](https://pme26elvis.github.io/rewind-for-ai-chats/) 并导入文件。
 
-| 功能 | 状态 | 说明 |
-| --- | --- | --- |
-| 沉浸式 Rewind 故事模式 | ✅ | 可选年份、多页面、支持多语言 |
-| Dashboard 分析 | ✅ | 每月活动、平台占比、词云、亮点摘要 |
-| 年度比较 | ✅ | 所选年份与前一年比较 |
-| 对话库 | ✅ | 搜索、排序、收藏、附件、metadata 标签 |
-| 可分享摘要卡片 | ✅ | 可把 Rewind 摘要导出成 PNG |
-| 本地浏览器档案库 | ✅ | 数据本地存储在 `localStorage` |
-| SQLite 同步 | ✅ | 可把导入档案同步到本地 API / SQLite |
-| 本地搜索基础 | ✅ | 已包含 SQLite FTS 搜索端点 |
-| GitHub Pages 部署 | ✅ | HashRouter + workflow 已配置 |
+### 方案 B — 手动保存重要对话
+1. 在 ChatGPT、Gemini、Claude 或 Grok 中打开一段对话。
+2. 使用浏览器的 **另存为**。
+3. 若可选，请保存为 `.mhtml`（部分情况下也支持 `.html` / `.htm`）。
+4. 将文件导入 Rewind。
 
-### 来源 / 格式支持
+## 概览
 
-| 来源 | JSON 导入 | HTML / MHTML 导入 | 批量导出脚本 | 建议流程 |
+AI 对话常常分散在不同平台上，后续也不容易重新查找与回顾。
+
+Rewind 提供一种本地优先的方式，让你能够在同一处收集、整理并查看这些对话。它将归档、浏览、分析与年度回顾整合在同一个应用中。
+
+## 功能
+
+- 导入来自 **ChatGPT、Grok、Gemini 与 Claude** 的对话
+- 建立 **本地优先** 的 AI 对话历史归档
+- 使用包含元数据、收藏与附件的 **对话资料库视图**
+- 探索可展示分支结构的 **统一时间线**
+- 查看受 Spotify Wrapped 启发的 **年度回顾**
+- 查看用于活动趋势与平台使用情况的 **分析仪表板**
+- 导出可分享的 **回顾卡片**
+- 可选择将导入数据同步到本地 **SQLite** 数据库
+
+## 功能亮点
+
+### 年度回顾
+按年份查看平台占比、活动情况与精选亮点。
+
+### 分析仪表板
+提供活动趋势、平台占比、主题信号与年度对比等图表。
+
+### 统一时间线
+以单一视图展示分支式对话的结构与历史。
+
+### 对话资料库视图
+可浏览、筛选、排序、收藏并查看已归档的对话。
+
+### 可分享的摘要卡片
+将回顾快照导出为图片。
+
+### 本地优先架构
+你的数据保留在你自己的设备上。
+
+- **浏览器归档：** 导入数据会存储在浏览器本地的 `localStorage`
+- **可选本地持久化：** 本地 Node API 可将数据同步到 SQLite
+- **数据库路径：** `packages/db/rewind.sqlite`
+- **搜索基础：** 已包含 SQLite 全文检索基础，可用于本地查询
+
+## 支持来源与格式
+
+| 来源 | JSON 导入 | HTML / MHTML 导入 | 批量导出脚本 | 推荐流程 |
 | --- | --- | --- | --- | --- |
-| ChatGPT | ✅ | ✅ | ✅ | 使用 userscript 或另存页面后导入 |
-| Grok | ✅ | ✅ | ✅ | 使用 userscript 或另存页面后导入 |
-| Gemini | — | ✅ | — | 另存网页 → `.mhtml` |
-| Claude | — | ✅ | — | 另存网页 → `.mhtml` |
+| ChatGPT | ✅ | ✅ | ✅ | Userscript 或保存页面后导入 |
+| Grok | ✅ | ✅ | ✅ | Userscript 或保存页面后导入 |
+| Gemini | — | ✅ | — | 另存为 → `.mhtml` |
+| Claude | — | ✅ | — | 另存为 → `.mhtml` |
 
-注意：Grok 的另存页面（HTML / MHTML）导入只会保留当前可见的 branch，因为保存页面本身不包含隐藏 branch 的完整历史。
+> 注意：对于 Grok 的保存页面导入（`.html` / `.mhtml`），由于隐藏分支历史不会包含在保存页面中，因此只会保留当前可见的分支。
 
-## 📸 Screenshots
+## 截图
 
-> 由于 UI/UX 调整相对频繁，请以 GitHub Pages 或本地部署画面作为主要参考。这里的截图偏向示意用途，不保证始终与最新界面完全一致。
+> UI 仍可能经常变动，请以 GitHub Pages 或你的本地部署版本为准。
 
-![Dashboard Overview](docs/screenshots/dashboard-overview.png)
 ![Rewind Story](docs/screenshots/rewind-story.png)
-![Library View](docs/screenshots/library-view.png)
 ![Timeline View](docs/screenshots/timeline-view.png)
-![Highlights View](docs/screenshots/highlights-view.png)
 
-## 🛠️ 在本地运行 App
+## GitHub Pages
 
-这个项目目前已现代化为 **React + Vite + Tailwind CSS** 架构。
+Rewind 已可直接部署为静态站点，并使用 `HashRouter` 以确保在 GitHub Pages 上的深层链接正常工作。
+
+**https://pme26elvis.github.io/rewind-for-ai-chats/**
+
+## 批量导出脚本
+
+若要从 **ChatGPT** 或 **Grok** 批量导出对话：
+
+1. 安装 [Tampermonkey](https://www.tampermonkey.net/)。
+2. 打开 [`packages/extension/rewind-batch-export.user.js`](packages/extension/rewind-batch-export.user.js)。
+3. 在 Tampermonkey 中点击 **Install**。
+4. 访问 [chatgpt.com](https://chatgpt.com) 或 [grok.com](https://grok.com)。
+5. 使用浮动的 **Rewind Batch Export** 面板导出归档数据。
+6. 将导出的 `.json` 文件导入 Rewind。
+
+对于 **Gemini** 与 **Claude**，当前推荐流程为：
+
+1. 在浏览器中打开该对话
+2. 使用 **另存为**
+3. 若可选，保存为 `.mhtml`
+4. 将文件导入 Rewind
+
+## 本地运行
+
+本项目使用 **React + Vite + Tailwind CSS**。
+
+### 启动 web app
 
 ```bash
-# 1. 安装依赖
 npm install
-
-# 2. 启动 Vite 开发服务器
 npm run dev:web
 ```
 
-然后前往 `http://localhost:4173/`，体验整个 dashboard。
+打开：
 
-如果你也想启用本地 SQLite 持久化与搜索基础，可以另外启动本地 API 服务器：
+`http://localhost:4173/`
+
+### 启动用于 SQLite 同步的本地 API
 
 ```bash
 npm run dev --workspace @rewind/api
 ```
 
-这会在 `http://localhost:8765/` 启动 Rewind Local API，而 dashboard 可通过 **Sync SQLite** 将数据同步进去。
+这会在以下地址启动本地 API：
 
-## ☁️ 部署到 GitHub Pages
-因为 Web App 使用 `HashRouter`，所以在静态托管环境下也能安全处理深层链接。
+`http://localhost:8765/`
 
-您可以在 GitHub Pages 在线试用此应用程序：[GitHub Pages](https://pme26elvis.github.io/rewind-for-ai-chats/)
+之后你可以从仪表板使用 **Sync SQLite**，将导入数据持久化到本地数据库。
 
-## 🕷️ 批量导出 — 多平台主动抓取工具
+## 致谢
 
-如果你想一键批量导出 **ChatGPT 或 Grok** 上的所有对话：
+本项目最初受到 [Yalums/lyra-exporter](https://github.com/Yalums/lyra-exporter)（MIT License）的启发。
 
-1. 在浏览器中安装 [Tampermonkey](https://www.tampermonkey.net/)。
-2. 打开 `packages/extension/rewind-batch-export.user.js`，并在 Tampermonkey 中点击 **Install**。
-3. 前往 [chatgpt.com](https://chatgpt.com) 或 [grok.com](https://grok.com)。右下角会出现浮动的 **「⚡ Rewind Batch Export」** 面板。
-4. 点击 **「🚀 Start Export」**。脚本会利用你当前的登录 session，通过内部 API 抓取完整的 JSON 对话树。
-5. 解压后，把 `.json` 文件拖入 Rewind 的 **Import Data** 页面，即可导入你的档案库。
+Rewind 此后已逐步演进为一个独立的本地归档、分析仪表板与年度回顾工具。对于原作者早期在 AI 对话结构抓取与映射方面的工作，仍致以完整的感谢与敬意。
 
-对于 **Gemini** 与 **Claude**，当前建议流程是：
+## 许可
 
-1. 在浏览器中打开该对话。
-2. 使用 **另存网页**。
-3. 若可选，优先保存为 `.mhtml`。
-4. 再把该文件导入 Rewind。
-
-## 📜 致谢与授权
-
-本项目最初受到 [Yalums/lyra-exporter](https://github.com/Yalums/lyra-exporter)（MIT License）启发。虽然本项目已大幅把重心从浏览器导出工具，转向一个独立、重视美感的本地分析仪表盘（也就是「Rewind」体验），但我们依然对原作者在 AI 聊天 DOM 抓取与通用 JSON 结构映射上的先驱逻辑，保有深深的感谢，并完整致上应有的 credit。
+本项目依据本仓库内附带的许可条款发布。
